@@ -1,9 +1,7 @@
-// pages/users/index.tsx
 import Header from "@/components/layout/Header";
 import UserCard from "@/components/common/UserCard";
-import { UserProps } from "@/interfaces";
-
-const Users = ({ posts }: { posts: UserProps[] }) => {
+import { UserProps, UsersPageProps } from "@/interfaces";
+const Users = ({ users }: UsersPageProps) => {
   return (
     <div>
       <Header />
@@ -12,7 +10,7 @@ const Users = ({ posts }: { posts: UserProps[] }) => {
           Users
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {posts.map((user: UserProps) => (
+          {users.map((user: UserProps) => (
             <UserCard
               key={user.id}
               name={user.name}
@@ -30,16 +28,14 @@ const Users = ({ posts }: { posts: UserProps[] }) => {
     </div>
   );
 };
-
 export async function getStaticProps() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
   const users = await response.json();
 
   return {
     props: {
-      posts: users, // name must match the prop expected above
+      users,
     },
   };
 }
-
 export default Users;
