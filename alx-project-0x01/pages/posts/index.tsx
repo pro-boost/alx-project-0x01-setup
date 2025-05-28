@@ -3,10 +3,10 @@ import PostModal from "@/components/common/PostModal";
 import Header from "@/components/layout/Header";
 import { PostData, PostsPageProps } from "@/interfaces";
 import { useState } from "react";
+import Button from "@/components/common/Button";
 
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [post, setPost] = useState<PostData | null>(null);"
   const [postList, setPostList] = useState<PostData[]>(posts);
 
   const handleAddPost = (newPost: PostData) => {
@@ -20,12 +20,11 @@ const Posts: React.FC<PostsPageProps> = ({ posts }) => {
       <main className="p-4">
         <div className="flex justify-between">
           <h1 className=" text-2xl font-semibold">Post Content</h1>
-          <button
+          <Button
             onClick={() => setModalOpen(true)}
             className="bg-blue-700 px-4 py-2 rounded-full text-white"
-          >
-            Add Post
-          </button>
+            text="Add Post"
+          />
         </div>
         <div className="grid grid-cols-3 gap-2 ">
           {postList.map(({ title, body, userId, id }, key) => (
