@@ -9,6 +9,7 @@ import { PostProps } from "@/interfaces";
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [postList, setPostList] = useState<PostData[]>(posts);
+  const [post, setPost] = useState<PostData | null>(null);
 
   const handleAddPost = (newPost: PostData) => {
     const newPostWithId = { ...newPost, id: postList.length + 1 };
