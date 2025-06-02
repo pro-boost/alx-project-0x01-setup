@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import { PostData, PostsPageProps } from "@/interfaces";
 import { useState } from "react";
 import Button from "@/components/common/Button";
+import { PostProps } from "@/interfaces";
 
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
